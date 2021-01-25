@@ -11,10 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
         android:layout_toEndOf="@+id/ivPoster"
+        android:textAlignment="center"
         android:textSize="24sp"
+        android:textStyle="bold"
         tools:text="Movie Title" />
 
     <TextView
@@ -22,36 +26,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
-        android:layout_marginStart="5dp"
+        android:layout_alignStart="@+id/tvTitle"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/ivPoster"
         tools:text="Overview" />
-
-    <ProgressBar
-        android:id="@+id/pbLoadingImage"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivPoster"
-        android:layout_alignEnd="@+id/ivPoster"
-        android:layout_alignBottom="@+id/ivPoster"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:indeterminate="true"
-        android:nestedScrollingEnabled="true"
-        android:visibility="visible" />
 
     <ImageView
         android:id="@+id/ivPoster"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="270dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:minWidth="120dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ProgressBar
+        android:id="@+id/pbLoadingImage"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:indeterminate="true"
+        android:nestedScrollingEnabled="true"
+        android:visibility="visible" />
 
 </RelativeLayout>
