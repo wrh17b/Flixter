@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#5A666B"
+    android:backgroundTint="#142634">
 
     <ImageView
         android:id="@+id/ivPoster"
@@ -24,7 +26,11 @@
         android:layout_below="@+id/ivPoster"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:numStars="5" />
+        android:backgroundTint="#D48872"
+        android:numStars="5"
+        android:progressTint="#D48872"
+        android:rating="3"
+        android:secondaryProgressTint="#D48872" />
 
     <ProgressBar
         android:id="@+id/pbLoadingImage"
@@ -34,8 +40,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp" />
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="5dp"
+        android:indeterminateTint="#D48872" />
 
 </RelativeLayout>
