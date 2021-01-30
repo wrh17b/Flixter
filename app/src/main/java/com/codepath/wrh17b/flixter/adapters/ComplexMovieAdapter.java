@@ -1,6 +1,7 @@
 package com.codepath.wrh17b.flixter.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,12 +20,15 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.codepath.wrh17b.flixter.DetailActivity;
 import com.codepath.wrh17b.flixter.R;
 import com.codepath.wrh17b.flixter.interfaces.OnBottomReachedListener;
 import com.codepath.wrh17b.flixter.interfaces.OnTopReachedListener;
 import com.codepath.wrh17b.flixter.models.Movie;
 import com.codepath.wrh17b.flixter.viewholders.ViewHolderLame;
 import com.codepath.wrh17b.flixter.viewholders.ViewHolderPopular;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -68,31 +73,34 @@ public class ComplexMovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Movie movie=movies.get(position);
 
         if(position==movies.size()-1){
             onBottomReachedListener.OnBottomReached(position);
         }else if(position==0){
             onTopReachedListener.OnTopReached(position);
         }
-
         if(holder.getItemViewType()==POPULAR){
             ViewHolderPopular pop = (ViewHolderPopular) holder;
-            bindpop(context, pop, position);
+            bindpop(context, pop, movie);
         }else{
             ViewHolderLame lame = (ViewHolderLame) holder;
-            bindlame(context, lame,position);
-
-
+            bindlame(context, lame,movie);
         }
+        holder.itemView.findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("movie", Parcels.wrap(movie));
+                context.startActivity(intent);
+            }
+        });
 
     }
 
-    private void bindlame(Context context, ViewHolderLame lame, int position) {
-
-        Movie movie = movies.get(position);
+    private void bindlame(Context context, ViewHolderLame lame, Movie movie) {
         lame.getTvTitle().setText(movie.getTitle());
         lame.getTvOverview().setText(movie.getOverview());
-
         String imgUrl=null;
         int width, height;
 
@@ -137,15 +145,14 @@ public class ComplexMovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     }
 
-    private void bindpop(Context context, ViewHolderPopular pop, int position) {
-        Movie movie = movies.get(position);
+    private void bindpop(Context context, ViewHolderPopular pop, Movie movie) {
         pop.getPbLoadingImage().setVisibility(View.VISIBLE);
         pop.getPbLoadingImage().bringToFront();
         pop.getPbLoadingImage().animate();
         int width=450, height=250;
 
 
-        pop.getRbPopular().setRating((float)movie.getVote_average()/(float)2.0);
+        pop.getRbPopular().setRating((float)movie.getVote_average());
         if(movie.getBackdropPath()!=null) {
             Glide.with(context).load(movie.getBackdropPath()).listener(new RequestListener<Drawable>() {
                 @Override
@@ -175,7 +182,7 @@ public class ComplexMovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
         //Popular movies only get special display in portrait mode
-        if(movies.get(position).getVote_average()>5
+        if(movies.get(position).getVote_average()>2.5
                 &&context.getResources().getConfiguration().orientation==Configuration.ORIENTATION_PORTRAIT){
             return POPULAR;
         }else{

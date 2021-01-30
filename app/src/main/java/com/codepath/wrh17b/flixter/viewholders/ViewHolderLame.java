@@ -3,6 +3,7 @@ package com.codepath.wrh17b.flixter.viewholders;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ public class ViewHolderLame extends RecyclerView.ViewHolder {
     private TextView tvOverview;
     private ImageView ivPoster;
     private ProgressBar pbLoadingImage;
+    private RelativeLayout container;
     private int width,height;
 
     public ViewHolderLame(@NonNull View itemView) {
@@ -25,8 +27,13 @@ public class ViewHolderLame extends RecyclerView.ViewHolder {
         tvOverview = itemView.findViewById(R.id.tvOverview);
         ivPoster = itemView.findViewById(R.id.ivPoster);
         pbLoadingImage = itemView.findViewById(R.id.pbLoadingImage);
+        container = itemView.findViewById(R.id.container);
 
 
+    }
+
+    public RelativeLayout getContainer() {
+        return container;
     }
 
     public TextView getTvTitle() {
@@ -60,4 +67,6 @@ public class ViewHolderLame extends RecyclerView.ViewHolder {
     public void setPbLoadingImage(ProgressBar pbLoadingImage) {
         this.pbLoadingImage = pbLoadingImage;
     }
+
+
 }
