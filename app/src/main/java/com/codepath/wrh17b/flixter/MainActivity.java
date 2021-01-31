@@ -31,9 +31,6 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Headers;
 
 public class MainActivity extends AppCompatActivity {
-//Branch
-//Part2 :)
-//why are changes in this branch being reflected in the master branch >:(
     public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
     public static final String TAG = "MainActivity: ",PAGETAG="Page: ";
     public static final int NEXT_PAGE=1, PREVIOUS_PAGE=-1, MAX_SIZE=40;
