@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layoutDetails"
+    android:id="@+id/svDetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#5A666B"
     android:backgroundTint="#142634"
     android:orientation="vertical"
     tools:context=".DetailActivity">
+
+    <LinearLayout
+        android:id="@+id/llDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#5A666B"
+        android:backgroundTint="#142634"
+        android:orientation="vertical"
+        tools:context=".DetailActivity">
+
 
     <Button
         android:id="@+id/btBack"
@@ -65,4 +75,6 @@
         android:textColor="#BDC7C1"
         android:textSize="18sp"
         tools:text="overview" />
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

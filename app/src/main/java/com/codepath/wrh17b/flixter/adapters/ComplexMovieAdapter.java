@@ -32,6 +32,8 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class ComplexMovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final int POPULAR =0, LAME=1;
@@ -121,7 +123,7 @@ public class ComplexMovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
         if(imgUrl!=null) {
-            Glide.with(context).load(imgUrl).listener(new RequestListener<Drawable>() {
+            Glide.with(context).load(imgUrl).transform(new RoundedCornersTransformation(30,10)).listener(new RequestListener<Drawable>() {
                 @Override
                 public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                     lame.getPbLoadingImage().setVisibility(View.INVISIBLE);
@@ -154,7 +156,7 @@ public class ComplexMovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         pop.getRbPopular().setRating((float)movie.getVote_average());
         if(movie.getBackdropPath()!=null) {
-            Glide.with(context).load(movie.getBackdropPath()).listener(new RequestListener<Drawable>() {
+            Glide.with(context).load(movie.getBackdropPath()).transform(new RoundedCornersTransformation(30,10)).listener(new RequestListener<Drawable>() {
                 @Override
                 public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                     pop.getPbLoadingImage().setVisibility(View.INVISIBLE);

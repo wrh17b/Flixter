@@ -173,61 +173,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        //AsyncHttpClient
-                client = new AsyncHttpClient();
+        client = new AsyncHttpClient();
         rvMovies = findViewById(R.id.rvMovies);
         rvMovies.setAdapter(complexMovieAdapter);
-        //rvMovies.setAdapter(new ComplexMovieAdapter(this,movies));
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
-
-
         movies.addAll(Movie.EmptyMovieList());
         complexMovieAdapter.notifyDataSetChanged();
-
-
         getMovies(client);
-
-/*
-        client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int i, Headers headers, JSON json) {
-                Log.d(TAG,"Success");
-                JSONObject jsonObject = json.jsonObject;
-                try {
-                    JSONArray results = jsonObject.getJSONArray("results");
-                    Log.i(TAG,"results: "+ results.toString());
-
-                    movies.addAll(Movie.fromJsonArray(results));
-
-                    for(int j=0;j<movies.size();j++){
-                        movieAdapter.notifyItemInserted(j);
-                    }
-
-                    //movieAdapter.notifyDataSetChanged();
-
-                    Log.i(TAG,"Movies: "+movies.size());
-
-                } catch (JSONException e) {
-                    Log.e(TAG,"Hit json exception",e);
-                    Toast.makeText(context,(CharSequence) "Could not load movies.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(int i, Headers headers, String s, Throwable throwable) {
-                Log.d(TAG,"Failure");
-
-            }
-        });
-*/
-
-
-
-
-
-
-
-
-
     }
 }
