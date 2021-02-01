@@ -2,16 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutDetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#5A666B"
+    android:backgroundTint="#142634"
     android:orientation="vertical"
     tools:context=".DetailActivity">
+
+    <Button
+        android:id="@+id/btBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#D48872"
+        android:insetLeft="6dp"
+        android:insetRight="6dp"
+        android:text="Back"
+        android:textColor="#142634" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:textColor="#BDC7C1"
         android:textSize="36sp"
         android:textStyle="bold"
         tools:text="Movie Title" />
@@ -19,7 +33,7 @@
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/player"
         android:layout_width="match_parent"
-        android:layout_height="250dp"/>
+        android:layout_height="250dp" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -27,14 +41,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:indeterminateTint="#D48872"
         android:isIndicator="true"
-        android:numStars="5" />
+        android:numStars="5"
+        android:progressBackgroundTint="#D48872"
+        android:progressTint="#D48872"
+        android:rating="3"
+        android:secondaryProgressTint="#D48872" />
 
     <TextView
         android:id="@+id/tvReleaseDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="viewStart"
+        android:textColor="#BDC7C1"
         tools:text="Release Date: yy-mm-dd" />
 
     <TextView
@@ -42,6 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:textColor="#BDC7C1"
         android:textSize="18sp"
         tools:text="overview" />
 </LinearLayout>

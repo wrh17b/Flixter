@@ -86,7 +86,7 @@ public class Movie {
     }
 
     public double getVote_average() {
-        return vote_average/2.0;
+        return (vote_average/2.0);
     }
 
     public String getRelease_date() {

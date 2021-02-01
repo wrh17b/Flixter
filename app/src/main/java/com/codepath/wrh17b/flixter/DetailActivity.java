@@ -1,10 +1,16 @@
 package com.codepath.wrh17b.flixter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -36,11 +42,14 @@ public class DetailActivity extends YouTubeBaseActivity {
     RatingBar rbRatingBar;
     YouTubePlayerView youTubePlayerView;
     Movie movie;
+    Button back;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        context=this;
 
         Intent intent = getIntent();
         movie = Parcels.unwrap(intent.getParcelableExtra("movie"));
@@ -50,11 +59,23 @@ public class DetailActivity extends YouTubeBaseActivity {
         tvOverview=findViewById(R.id.tvOverview);
         rbRatingBar=findViewById(R.id.ratingBar);
         youTubePlayerView = findViewById(R.id.player);
+        back = findViewById(R.id.btBack);
 
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
         tvRelease.setText(String.format("Release Date:%s",movie.getRelease_date()));
         rbRatingBar.setRating((float)movie.getVote_average());
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(context,MainActivity.class);
+                startActivity(back);
+
+            }
+        });
+
+
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(String.format(VIDEOS_URL, movie.getId()), new JsonHttpResponseHandler() {
@@ -97,69 +118,6 @@ public class DetailActivity extends YouTubeBaseActivity {
 
             }
         });
-/*
-        youTubePlayerView.initialize(YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                Log.d(TAG,"onInitializationSuccess");
-
-                AsyncHttpClient client = new AsyncHttpClient();
-                client.get(String.format(VIDEOS_URL, movie.getId()), new JsonHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int i, Headers headers, JSON json) {
-                        Log.d(TAG,"client onSuccess");
-                        try {
-                            JSONArray results = json.jsonObject.getJSONArray("results");
-                            if(results.length()==0){
-                                return;
-                            }
-                            String youtubeKey=null;
-                            for(int j=0;j<results.length();j++){
-                                JSONObject details = results.getJSONObject(j);
-                                String site = details.getString("site");
-                                String type=details.getString("type");
-
-                                if(site.equals("YouTube")&&type.equals("Trailer")){
-                                    youtubeKey=details.getString("key");
-                                    break;
-                                }
-                            }
-                            if(youtubeKey==null){
-                                return;
-                            }
-                            if(movie.getVote_average()>2.5){
-                                youTubePlayer.loadVideo(youtubeKey);
-                            }else{
-                                youTubePlayer.cueVideo(youtubeKey);
-                            }
-                            //String youtubeKey = results.getJSONObject(0).getString("key");
-
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onFailure(int i, Headers headers, String s, Throwable throwable) {
-                        Log.d(TAG,"client onFailure");
-
-
-                    }
-                });
-
-
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Log.d(TAG,String.format("onInitializationFailure: %s",youTubeInitializationResult.toString()));
-            }
-        });
-*/
 
     }
 

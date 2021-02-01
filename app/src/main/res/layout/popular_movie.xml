@@ -31,8 +31,10 @@
         android:layout_marginTop="5dp"
         android:backgroundTint="#D48872"
         android:clickable="false"
+        android:indeterminateTint="#D48872"
         android:isIndicator="true"
         android:numStars="5"
+        android:progressBackgroundTint="#D48872"
         android:progressTint="#D48872"
         android:rating="3"
         android:secondaryProgressTint="#D48872" />
