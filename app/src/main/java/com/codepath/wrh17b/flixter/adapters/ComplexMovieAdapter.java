@@ -1,10 +1,12 @@
 package com.codepath.wrh17b.flixter.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -21,6 +24,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.codepath.wrh17b.flixter.DetailActivity;
+import com.codepath.wrh17b.flixter.MainActivity;
 import com.codepath.wrh17b.flixter.R;
 import com.codepath.wrh17b.flixter.interfaces.OnBottomReachedListener;
 import com.codepath.wrh17b.flixter.interfaces.OnTopReachedListener;

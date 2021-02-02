@@ -38,7 +38,8 @@
         android:textColor="#BDC7C1"
         android:textSize="36sp"
         android:textStyle="bold"
-        tools:text="Movie Title" />
+        tools:text="Movie Title"
+        android:transitionName="transitionTitle"/>
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/player"
@@ -74,7 +75,8 @@
         android:textAlignment="center"
         android:textColor="#BDC7C1"
         android:textSize="18sp"
-        tools:text="overview" />
+        tools:text="overview"
+        android:transitionName="transitionOverview"/>
     </LinearLayout>
 
 </ScrollView>

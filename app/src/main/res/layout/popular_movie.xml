@@ -53,4 +53,17 @@
         android:layout_marginEnd="5dp"
         android:indeterminateTint="#D48872" />
 
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:transitionName="transitionTitle"/>
+
+    <TextView
+        android:id="@+id/tvOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
 </RelativeLayout>

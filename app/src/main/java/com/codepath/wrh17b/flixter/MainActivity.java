@@ -182,3 +182,4 @@ public class MainActivity extends AppCompatActivity {
         getMovies(client);
     }
 }
+
